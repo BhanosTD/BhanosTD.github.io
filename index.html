@@ -7,6 +7,49 @@
     <title>Document</title>
 </head>
 <body>
-    Hello! This is my (hopefully some day) interactive CV/Portfolio. It's currently under constructon as you can see ;)
+    Hello! This is my (hopefully some day) interactive CV/Portfolio. It's currently under constructon as you can see ;) <br>
+    
+    <canvas width="256px" height="256px" id="can1"></canvas>
+
+    <div style="display:none;">
+        <img id="hammer" src="sources/images/2dHammer.png"/>
+    </div>
+
+    <script>
+        let frameDelta = 1000/50/1000;
+        let time = 0;
+
+        let canvas = document.getElementById("can1");
+        let ctx = canvas.getContext("2d");
+        let hammer = document.getElementById("hammer");
+
+        setInterval(update, frameDelta * 1000);
+
+        function update(){
+            time += frameDelta;
+
+            draw();
+        }
+
+        function draw(){
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            drawRotatedImage(hammer, canvas.width/2-64, canvas.height - 70, 128, 128, -Math.sqrt(Math.abs(Math.sin(time * 5))) * 90 + 90, 0, -64);
+            
+            ctx.fillStyle = "#444444"
+            ctx.fillRect(0, canvas.height-64, canvas.width, 64);
+        }
+
+        function drawRotatedImage(img, x, y, w, h, r = 0, xo = 0, yo = 0){
+            ctx.save();
+
+            ctx.translate(x, y);
+            ctx.rotate(r * Math.PI/180);
+            ctx.drawImage(img, -w/2 + xo, -h/2 + yo, w, h);
+
+            ctx.restore();
+        }
+
+    </script>
 </body>
 </html>
