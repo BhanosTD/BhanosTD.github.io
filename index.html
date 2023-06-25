@@ -39,6 +39,7 @@
 
             drawRotatedImage(hammer, canvas.width/2-64, canvas.height - 70, 128, 128, -Math.sqrt(Math.abs(Math.sin(time * 5))) * 90 + 90, 0, -64);
             
+            ctx.beginPath();
             ctx.fillStyle = "#444444"
             ctx.roundRect(0, canvas.height-64, canvas.width, 32, 8);
             
