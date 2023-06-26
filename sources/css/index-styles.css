@@ -1,0 +1,12 @@
+.resize-on-hover{
+    transform: none;
+    transition: all .2s ease-in-out;
+
+    width: 84px;
+    height: 84px;
+}
+
+.resize-on-hover:hover{
+    scale: 1.1;
+    rotate: -0.02turn;
+}
